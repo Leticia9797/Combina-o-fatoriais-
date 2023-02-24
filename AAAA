@@ -1,0 +1,149 @@
+#Código
+
+import openpyxl
+
+def encontra_soma(n, arr):
+    if n == 0:
+        return []
+    if not arr:
+        return 0
+    if arr[0] > n:
+        return encontra_soma(n, arr[1:])
+    
+    incluir = encontra_soma(n - arr[0], arr[1:])
+    if incluir is not 0:
+        return [arr[0]] + incluir
+    else:
+        return encontra_soma(n, arr[1:])
+
+# Abre o arquivo do Excel
+workbook = openpyxl.load_workbook('SVR 153005910 - Veículos.xlsx')
+
+# Seleciona a planilha e a coluna que deseja ler
+worksheet = workbook['Sheet1']
+column = worksheet['V']
+
+# Armazena todos os valores da coluna em um Array
+valores = []
+print("Valores da coluna V:")
+
+for cell in column:
+    valores.append(cell.value)
+print(valores)
+
+# Lê um número N
+n = str(input("Digite um número:  "))
+
+# Chama a função encontra_soma para determinar quais valores somados do Array resultam no número N
+resultado = encontra_soma(n, valores)
+
+# Imprime o resultado
+if resultado is None:
+    print("Não foi possível encontrar uma soma que resulte em", n)
+else:
+    print("A soma de", " + ".join(str(x) for x in resultado), "é igual a", n)
+    
+Base Planilha 
+
+Valor_Devolvido    	Forma_Devolucao
+ 798,23 	              TED
+ 798,23                	TED
+ 798,23 	              TED
+ 798,23 	TED
+ 795,53 	TED
+ 795,53 	TED
+ 789,84 	TED
+ 787,08 	TED
+ 787,08 	TED
+ 785,03 	TED
+ 783,34 	TED
+ 783,34 	TED
+ 782,56 	TED
+ 782,56 	TED
+ 781,67 	TED
+ 780,92 	TED
+ 780,92 	TED
+ 779,83 	TED
+ 779,83 	TED
+ 778,97 	TED
+ 778,95 	TED
+ 778,44 	TED
+ 776,17 	TED
+ 775,45 	TED
+ 774,31 	TED
+ 773,49 	TED
+ 773,08 	TED
+ 773,08 	TED
+ 773,08 	TED
+ 772,49 	TED
+ 771,77 	TED
+ 771,77 	TED
+ 771,27 	TED
+ 770,92 	TED
+ 766,36 	TED
+ 765,89 	TED
+ 765,86 	TED
+ 765,86 	TED
+ 765,37 	TED
+ 765,37 	TED
+ 765,37 	TED
+ 764,68 	TED
+ 763,19 	TED
+ 760,04 	TED
+ 760,04 	TED
+ 760,04 	TED
+ 760,04 	TED
+ 760,04 	TED
+ 758,83 	TED
+ 757,34 	TED
+ 635,06 	TED
+ 635,06 	TED
+ 635,06 	TED
+ 629,71 	TED
+ 629,71 	TED
+ 629,71 	TED
+ 629,71 	TED
+ 622,37 	TED
+ 622,37 	TED
+ 622,37 	TED
+ 622,37 	TED
+ 616,69 	TED
+ 616,69 	TED
+ 616,69 	TED
+ 616,69 	TED
+ 613,71 	TED
+ 608,06 	TED
+ 608,06 	TED
+ 608,06 	TED
+ 602,80 	TED
+ 602,80 	TED
+ 602,38 	TED
+ 602,38 	TED
+ 597,25 	TED
+ 597,25 	TED
+ 597,25 	TED
+ 594,87 	TED
+ 594,87 	TED
+ 594,87 	TED
+ 591,67 	TED
+ 591,67 	TED
+ 591,67 	TED
+ 591,67 	TED
+ 591,67 	TED
+ 590,47 	TED
+ 589,02 	TED
+ 589,02 	TED
+ 589,02 	TED
+ 587,67 	TED
+ 586,55 	TED
+ 586,55 	TED
+ 583,92 	TED
+ 583,92 	TED
+ 583,92 	TED
+ 582,12 	TED
+ 582,12 	TED
+ 578,99 	TED
+ 
+ 
+ Soma da coluna valor devolvido: 67.162.05
+ Preciso descobrir a combinação para a soma: 51816.12
